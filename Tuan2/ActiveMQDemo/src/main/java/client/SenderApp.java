@@ -91,9 +91,9 @@ public class SenderApp {
 				try {
 					msg = session.createTextMessage(text);
 					producer.send(msg);
-					Person p = new Person(1002, "La Vo Minh Quan", new Date());
-					String xml = new XMLConvert<Person>(p).object2XML(p);
-					msg = session.createTextMessage(xml);
+//					Person p = new Person(1002, "La Vo Minh Quan", new Date());
+//					String xml = new XMLConvert<Person>(p).object2XML(p);
+//					msg = session.createTextMessage(xml);
 					producer.send(msg);
 					
 					System.out.println("Finished....");

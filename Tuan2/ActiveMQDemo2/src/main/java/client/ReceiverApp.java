@@ -35,7 +35,7 @@ public class ReceiverApp {
 		motto1 = new JTextArea();
 
 		// set size of the text box
-		motto1.setBounds(50, 100, 200, 30);
+		motto1.setBounds(50, 100, 1000, 1000);
 
 		// add elements to the frame
 		f.add(labelM);
