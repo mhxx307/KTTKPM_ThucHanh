@@ -1,13 +1,9 @@
 package com.example.spring_boot_api_jwt_ad.authen;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 
@@ -15,7 +11,12 @@ import java.util.Collection;
 
 @Getter@Setter
 public class UserPrincipal implements UserDetails {
-    private Long userId;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private Long userId;
     private String username;
     private String password;
     private Collection authorities;

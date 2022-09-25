@@ -13,13 +13,44 @@ import java.util.Set;
 @Setter
 public class Role extends BaseEntity {
 
-    private String roleName;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-    private String roleKey;
+	@Column(name = "role_name")
+	private String roleName;
 
-    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-    @JoinTable(name = "t_role_permission", joinColumns = {@JoinColumn(name = "role_id")}, inverseJoinColumns = {@JoinColumn(name = "permission_id")})
-    private Set<Permission> permissions = new HashSet<>();
+	@Column(name = "role_key")
+	private String roleKey;
+
+	@OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+	@JoinTable(name = "t_role_permission", joinColumns = { @JoinColumn(name = "role_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "permission_id") })
+	private Set<Permission> permissions = new HashSet<>();
+
+	public Role() {
+		super();
+	}
+
+	public Role(String roleName, String roleKey, Set<Permission> permissions) {
+		super();
+		this.roleName = roleName;
+		this.roleKey = roleKey;
+		this.permissions = permissions;
+	}
+
+//	public Role(String roleName, String roleKey) {
+//		super();
+//		this.roleName = roleName;
+//		this.roleKey = roleKey;
+//		permissions = new HashSet<Permission>();
+//	}
+
+//	public void addPermisstions(String permissionName, String permissionKey) {
+//		Permission permission = new Permission(permissionName, permissionKey);
+//		permissions.add(permission);
+//	}
 
 	public String getRoleName() {
 		return roleName;
@@ -44,6 +75,5 @@ public class Role extends BaseEntity {
 	public void setPermissions(Set<Permission> permissions) {
 		this.permissions = permissions;
 	}
-    
-    
+
 }

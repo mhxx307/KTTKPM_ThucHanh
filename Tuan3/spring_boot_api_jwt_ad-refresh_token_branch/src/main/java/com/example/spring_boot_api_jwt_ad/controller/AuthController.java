@@ -1,17 +1,21 @@
 package com.example.spring_boot_api_jwt_ad.controller;
 
 import com.example.spring_boot_api_jwt_ad.authen.UserPrincipal;
+import com.example.spring_boot_api_jwt_ad.entity.Permission;
+import com.example.spring_boot_api_jwt_ad.entity.Role;
 import com.example.spring_boot_api_jwt_ad.entity.Token;
 import com.example.spring_boot_api_jwt_ad.entity.User;
 import com.example.spring_boot_api_jwt_ad.service.TokenService;
 import com.example.spring_boot_api_jwt_ad.service.UserService;
 import com.example.spring_boot_api_jwt_ad.util.JwtUtil;
+
+import java.util.HashSet;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,7 +37,12 @@ public class AuthController {
     @PostMapping("/register")
     public User register(@RequestBody User user){
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-
+//        Set<Permission> permissions = new HashSet<Permission>();
+//        permissions.add(new Permission("READ", "read_key"));
+//        Role role = new Role("USER", "user_key", permissions);
+//        Set<Role> roles = new HashSet<Role>();
+//        roles.add(role);
+//        user.setRoles(roles);
         return userService.createUser(user);
     }
 
