@@ -3,14 +3,14 @@
 -- ----------------------------
 DROP TABLE IF EXISTS chuyenbay;
 CREATE TABLE chuyenbay (
-  MaCB varchar(5) NOT NULL,
-  GaDi varchar(50) DEFAULT NULL,
-  GaDen varchar(50) DEFAULT NULL,
-  DoDai integer DEFAULT NULL,
-  GioDi time DEFAULT NULL,
-  GioDen time DEFAULT NULL,
-  ChiPhi integer DEFAULT NULL,
-  PRIMARY KEY (MaCB)
+  ma_cb varchar(5) NOT NULL,
+  ga_di varchar(50) DEFAULT NULL,
+  ga_den varchar(50) DEFAULT NULL,
+  do_dai integer DEFAULT NULL,
+  gio_di time DEFAULT NULL,
+  gio_den time DEFAULT NULL,
+  chi_phi integer DEFAULT NULL,
+  PRIMARY KEY (ma_cb)
 );
 
 -- ----------------------------
@@ -40,10 +40,10 @@ INSERT INTO chuyenbay VALUES ('VN741', 'HAN', 'PXU', '395', '06:30:00', '08:30:0
 -- ----------------------------
 DROP TABLE IF EXISTS maybay;
 CREATE TABLE maybay (
-  MaMB integer NOT NULL DEFAULT '0',
-  Loai varchar(50) DEFAULT NULL,
-  TamBay integer DEFAULT NULL,
-  PRIMARY KEY (MaMB)
+  ma_mb integer NOT NULL DEFAULT '0',
+  loai varchar(50) DEFAULT NULL,
+  tam_bay integer DEFAULT NULL,
+  PRIMARY KEY (ma_mb)
 );
 
 -- ----------------------------
@@ -65,96 +65,96 @@ INSERT INTO maybay VALUES ('777', 'Boeing 777 - 300', '10306');
 -- ----------------------------
 DROP TABLE IF EXISTS nhanvien;
 CREATE TABLE nhanvien (
-  MaNV varchar(9) NOT NULL DEFAULT '',
-  Ten varchar(50) DEFAULT NULL,
-  Luong integer DEFAULT NULL,
-  PRIMARY KEY (MaNV)
+  ma_nv varchar(9) NOT NULL DEFAULT '',
+  luong integer DEFAULT NULL,
+  ten varchar(50) DEFAULT NULL,
+  PRIMARY KEY (ma_nv)
 );
 
 -- ----------------------------
 -- Records of nhanvien
 -- ----------------------------
-INSERT INTO nhanvien VALUES ('011564812', 'Ton Van Quy', '153972');
-INSERT INTO nhanvien VALUES ('141582651', 'Doan Thi Mai', '178345');
-INSERT INTO nhanvien VALUES ('142519864', 'Nguyen Thi Xuan Dao', '227489');
-INSERT INTO nhanvien VALUES ('159542516', 'Le Van Ky', '48250');
-INSERT INTO nhanvien VALUES ('242518965', 'Tran Van Son', '120433');
-INSERT INTO nhanvien VALUES ('248965255', 'Tran Thi Ba', '43723');
-INSERT INTO nhanvien VALUES ('254099823', 'Nguyen Thi Quynh', '24450');
-INSERT INTO nhanvien VALUES ('269734834', 'Truong Tuan Anh', '289950');
-INSERT INTO nhanvien VALUES ('274878974', 'Mai Quoc Minh', '99890');
-INSERT INTO nhanvien VALUES ('287321212', 'Duong Van Minh', '48090');
-INSERT INTO nhanvien VALUES ('310454876', 'Ta Van Do', '212156');
-INSERT INTO nhanvien VALUES ('310454877', 'Tran Van Hao', '33546');
-INSERT INTO nhanvien VALUES ('348121549', 'Nguyen Van Thanh', '32899');
-INSERT INTO nhanvien VALUES ('355548984', 'Tran Thi Hoai An', '212156');
-INSERT INTO nhanvien VALUES ('356187925', 'Nguyen Vinh Bao', '44740');
-INSERT INTO nhanvien VALUES ('390487451', 'Le Van Luat', '212156');
-INSERT INTO nhanvien VALUES ('489221823', 'Bui Quoc Chinh', '23980');
-INSERT INTO nhanvien VALUES ('489456522', 'Nguyen Thi Quy Linh', '127984');
-INSERT INTO nhanvien VALUES ('548977562', 'Le Van Quy', '84476');
-INSERT INTO nhanvien VALUES ('550156548', 'Nguyen Thi Cam', '205187');
-INSERT INTO nhanvien VALUES ('552455318', 'La Que', '101745');
-INSERT INTO nhanvien VALUES ('552455348', 'Bui Thi Dung', '92013');
-INSERT INTO nhanvien VALUES ('567354612', 'Quan Cam Ly', '256481');
-INSERT INTO nhanvien VALUES ('574489457', 'Dui Van Lap', '20');
+INSERT INTO nhanvien VALUES ('011564812', '153972', 'Ton Van Quy');
+INSERT INTO nhanvien VALUES ('141582651', '178345', 'Doan Thi Mai');
+INSERT INTO nhanvien VALUES ('142519864', '227489', 'Nguyen Thi Xuan Dao');
+INSERT INTO nhanvien VALUES ('159542516', '48250', 'Le Van Ky');
+INSERT INTO nhanvien VALUES ('242518965', '120433', 'Tran Van Son');
+INSERT INTO nhanvien VALUES ('248965255', '43723', 'Tran Thi Ba');
+INSERT INTO nhanvien VALUES ('254099823', '24450', 'Nguyen Thi Quynh');
+INSERT INTO nhanvien VALUES ('269734834', '289950', 'Truong Tuan Anh');
+INSERT INTO nhanvien VALUES ('274878974', '99890', 'Mai Quoc Minh');
+INSERT INTO nhanvien VALUES ('287321212', '48090', 'Duong Van Minh');
+INSERT INTO nhanvien VALUES ('310454876', '212156', 'Ta Van Do');
+INSERT INTO nhanvien VALUES ('310454877', '33546', 'Tran Van Hao');
+INSERT INTO nhanvien VALUES ('348121549', '32899', 'Nguyen Van Thanh');
+INSERT INTO nhanvien VALUES ('355548984', '212156', 'Tran Thi Hoai An');
+INSERT INTO nhanvien VALUES ('356187925', '44740', 'Nguyen Vinh Bao');
+INSERT INTO nhanvien VALUES ('390487451', '212156', 'Le Van Luat');
+INSERT INTO nhanvien VALUES ('489221823', '23980', 'Bui Quoc Chinh');
+INSERT INTO nhanvien VALUES ('489456522', '127984', 'Nguyen Thi Quy Linh');
+INSERT INTO nhanvien VALUES ('548977562', '84476', 'Le Van Quy');
+INSERT INTO nhanvien VALUES ('550156548', '205187', 'Nguyen Thi Cam');
+INSERT INTO nhanvien VALUES ('552455318', '101745', 'La Que');
+INSERT INTO nhanvien VALUES ('552455348', '92013', 'Bui Thi Dung');
+INSERT INTO nhanvien VALUES ('567354612', '256481', 'Quan Cam Ly');
+INSERT INTO nhanvien VALUES ('574489457', '20', 'Dui Van Lap');
 
 -- ----------------------------
 -- Table structure for chungnhan
 -- ----------------------------
 DROP TABLE IF EXISTS chungnhan;
 CREATE TABLE chungnhan (
-  MaNV varchar(9) NOT NULL DEFAULT '',
-  MaMB integer NOT NULL DEFAULT '0',
-  PRIMARY KEY (MaNV,MaMB),
-  CONSTRAINT FK_CN1 FOREIGN KEY (MaNV) REFERENCES nhanvien (MaNV),
-  CONSTRAINT FK_CN2 FOREIGN KEY (MaMB) REFERENCES maybay (MaMB)
+  ma_mb integer NOT NULL DEFAULT '0',
+  ma_nv varchar(9) NOT NULL DEFAULT '',
+  PRIMARY KEY (ma_nv,ma_mb),
+  CONSTRAINT FK_CN1 FOREIGN KEY (ma_nv) REFERENCES nhanvien (ma_nv),
+  CONSTRAINT FK_CN2 FOREIGN KEY (ma_mb) REFERENCES maybay (ma_mb)
 );
 
 -- ----------------------------
 -- Records of chungnhan
 -- ----------------------------
-INSERT INTO chungnhan VALUES ('269734834', '154');
-INSERT INTO chungnhan VALUES ('310454876', '154');
-INSERT INTO chungnhan VALUES ('355548984', '154');
-INSERT INTO chungnhan VALUES ('574489457', '154');
-INSERT INTO chungnhan VALUES ('269734834', '319');
-INSERT INTO chungnhan VALUES ('390487451', '319');
-INSERT INTO chungnhan VALUES ('552455318', '319');
-INSERT INTO chungnhan VALUES ('142519864', '320');
-INSERT INTO chungnhan VALUES ('269734834', '320');
-INSERT INTO chungnhan VALUES ('390487451', '320');
-INSERT INTO chungnhan VALUES ('552455318', '320');
-INSERT INTO chungnhan VALUES ('142519864', '340');
-INSERT INTO chungnhan VALUES ('269734834', '340');
-INSERT INTO chungnhan VALUES ('390487451', '340');
-INSERT INTO chungnhan VALUES ('567354612', '340');
-INSERT INTO chungnhan VALUES ('269734834', '727');
-INSERT INTO chungnhan VALUES ('567354612', '727');
-INSERT INTO chungnhan VALUES ('011564812', '737');
-INSERT INTO chungnhan VALUES ('141582651', '737');
-INSERT INTO chungnhan VALUES ('142519864', '737');
-INSERT INTO chungnhan VALUES ('242518965', '737');
-INSERT INTO chungnhan VALUES ('269734834', '737');
-INSERT INTO chungnhan VALUES ('552455318', '737');
-INSERT INTO chungnhan VALUES ('567354612', '737');
-INSERT INTO chungnhan VALUES ('142519864', '747');
-INSERT INTO chungnhan VALUES ('269734834', '747');
-INSERT INTO chungnhan VALUES ('567354612', '747');
-INSERT INTO chungnhan VALUES ('011564812', '757');
-INSERT INTO chungnhan VALUES ('141582651', '757');
-INSERT INTO chungnhan VALUES ('142519864', '757');
-INSERT INTO chungnhan VALUES ('242518965', '757');
-INSERT INTO chungnhan VALUES ('269734834', '757');
-INSERT INTO chungnhan VALUES ('274878974', '757');
-INSERT INTO chungnhan VALUES ('567354612', '757');
-INSERT INTO chungnhan VALUES ('141582651', '767');
-INSERT INTO chungnhan VALUES ('142519864', '767');
-INSERT INTO chungnhan VALUES ('269734834', '767');
-INSERT INTO chungnhan VALUES ('274878974', '767');
-INSERT INTO chungnhan VALUES ('552455318', '767');
-INSERT INTO chungnhan VALUES ('567354612', '767');
-INSERT INTO chungnhan VALUES ('142519864', '777');
-INSERT INTO chungnhan VALUES ('269734834', '777');
-INSERT INTO chungnhan VALUES ('567354612', '777');
+INSERT INTO chungnhan VALUES ('154', '269734834');
+INSERT INTO chungnhan VALUES ('154', '310454876');
+INSERT INTO chungnhan VALUES ('154', '355548984');
+INSERT INTO chungnhan VALUES ('154', '574489457');
+INSERT INTO chungnhan VALUES ('319', '269734834');
+INSERT INTO chungnhan VALUES ('319', '390487451');
+INSERT INTO chungnhan VALUES ('319', '552455318');
+INSERT INTO chungnhan VALUES ('320', '142519864');
+INSERT INTO chungnhan VALUES ('320', '269734834');
+INSERT INTO chungnhan VALUES ('320', '390487451');
+INSERT INTO chungnhan VALUES ('320', '552455318');
+INSERT INTO chungnhan VALUES ('340', '142519864');
+INSERT INTO chungnhan VALUES ('340', '269734834');
+INSERT INTO chungnhan VALUES ('340', '390487451');
+INSERT INTO chungnhan VALUES ('340', '567354612');
+INSERT INTO chungnhan VALUES ('727', '269734834');
+INSERT INTO chungnhan VALUES ('727', '567354612');
+INSERT INTO chungnhan VALUES ('737', '011564812');
+INSERT INTO chungnhan VALUES ('737', '141582651');
+INSERT INTO chungnhan VALUES ('737', '142519864');
+INSERT INTO chungnhan VALUES ('737', '242518965');
+INSERT INTO chungnhan VALUES ('737', '269734834');
+INSERT INTO chungnhan VALUES ('737', '552455318');
+INSERT INTO chungnhan VALUES ('737', '567354612');
+INSERT INTO chungnhan VALUES ('747', '142519864');
+INSERT INTO chungnhan VALUES ('747', '269734834');
+INSERT INTO chungnhan VALUES ('747', '567354612');
+INSERT INTO chungnhan VALUES ('757', '011564812');
+INSERT INTO chungnhan VALUES ('757', '141582651');
+INSERT INTO chungnhan VALUES ('757', '142519864');
+INSERT INTO chungnhan VALUES ('757', '242518965');
+INSERT INTO chungnhan VALUES ('757', '269734834');
+INSERT INTO chungnhan VALUES ('757', '274878974');
+INSERT INTO chungnhan VALUES ('757', '567354612');
+INSERT INTO chungnhan VALUES ('767', '141582651');
+INSERT INTO chungnhan VALUES ('767', '142519864');
+INSERT INTO chungnhan VALUES ('767', '269734834');
+INSERT INTO chungnhan VALUES ('767', '274878974');
+INSERT INTO chungnhan VALUES ('767', '552455318');
+INSERT INTO chungnhan VALUES ('767', '567354612');
+INSERT INTO chungnhan VALUES ('777', '142519864');
+INSERT INTO chungnhan VALUES ('777', '269734834');
+INSERT INTO chungnhan VALUES ('777', '567354612');
 
