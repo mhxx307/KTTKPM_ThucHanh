@@ -27,4 +27,14 @@ public class ChuyenBayController {
 		return chuyenBayService.findChuyenBayByGaDen(gaDen);
 	}
 	
+	@GetMapping("/ChuyenBay/doDai/{from}-{to}")
+	public List<ChuyenBay> findChuyenBayByDoDai(@PathVariable int from, @PathVariable int to) {
+		return chuyenBayService.findChuyenBayByDoDai(from, to);
+	}
+	
+	@GetMapping("/ChuyenBay/viTri/{from}-{to}")
+	public List<ChuyenBay> findChuyenBayByViTri(@PathVariable String from, @PathVariable String to) {
+		System.out.println(from + to);
+		return chuyenBayService.findChuyenBayByViTri(from, to);
+	}
 }

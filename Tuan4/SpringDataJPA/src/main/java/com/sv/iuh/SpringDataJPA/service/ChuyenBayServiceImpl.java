@@ -27,4 +27,17 @@ public class ChuyenBayServiceImpl implements ChuyenBayService {
 		return listChuyenBay;
 	}
 
+	@Override
+	@Transactional
+	public List<ChuyenBay> findChuyenBayByDoDai(int from, int to) {
+		List<ChuyenBay> listChuyenBay = chuyenBayRepository.findChuyenBayByDoDai(from, to);
+		return listChuyenBay;
+	}
+
+	@Override
+	@Transactional
+	public List<ChuyenBay> findChuyenBayByViTri(String from, String to) {
+		return chuyenBayRepository.findChuyenBayTheoViTri(from, to);
+	}
+
 }
