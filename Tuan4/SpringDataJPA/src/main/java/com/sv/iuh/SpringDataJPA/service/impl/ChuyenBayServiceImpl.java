@@ -1,4 +1,4 @@
-package com.sv.iuh.SpringDataJPA.service;
+package com.sv.iuh.SpringDataJPA.service.impl;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.sv.iuh.SpringDataJPA.dao.ChuyenBayRepository;
 import com.sv.iuh.SpringDataJPA.entity.ChuyenBay;
+import com.sv.iuh.SpringDataJPA.service.ChuyenBayService;
 
 @Service
 public class ChuyenBayServiceImpl implements ChuyenBayService {
@@ -38,6 +39,12 @@ public class ChuyenBayServiceImpl implements ChuyenBayService {
 	@Transactional
 	public List<ChuyenBay> findChuyenBayByViTri(String from, String to) {
 		return chuyenBayRepository.findChuyenBayTheoViTri(from, to);
+	}
+
+	@Override
+	@Transactional
+	public int countChuyenBayTheoDiemXuatPhat(String gaDi) {
+		return chuyenBayRepository.countChuyenBayTheoDiemXuatPhat(gaDi);
 	}
 
 }

@@ -15,12 +15,8 @@ import com.sv.iuh.SpringDataJPA.service.ChuyenBayService;
 @RequestMapping("/api")
 public class ChuyenBayController {
 	
-	private ChuyenBayService chuyenBayService;
-	
 	@Autowired
-	public ChuyenBayController(ChuyenBayService theService) {
-		chuyenBayService = theService;
-	}
+	private ChuyenBayService chuyenBayService;
 	
 	@GetMapping("/ChuyenBay/{gaDen}")
 	public List<ChuyenBay> findChuyenBayByGaDen(@PathVariable String gaDen) {
@@ -36,5 +32,10 @@ public class ChuyenBayController {
 	public List<ChuyenBay> findChuyenBayByViTri(@PathVariable String from, @PathVariable String to) {
 		System.out.println(from + to);
 		return chuyenBayService.findChuyenBayByViTri(from, to);
+	}
+	
+	@GetMapping("ChuyenBay/count/{gaDi}")
+	public int countChuyenBayTheoDiemXuatPhat(@PathVariable String gaDi) {
+		return chuyenBayService.countChuyenBayTheoDiemXuatPhat(gaDi);
 	}
 }

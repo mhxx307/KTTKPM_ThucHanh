@@ -1,7 +1,6 @@
 package com.sv.iuh.SpringDataJPA.controller;
 
 import java.util.List;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,12 +16,8 @@ import com.sv.iuh.SpringDataJPA.service.NhanVienService;
 @RestController
 @RequestMapping("/api")
 public class NhanVienController {
-	private NhanVienService nhanVienService;
-	
 	@Autowired
-	public NhanVienController(NhanVienService theService) {
-		nhanVienService = theService;
-	}
+	private NhanVienService nhanVienService;
 	
 	@PostMapping("/NhanVien")
 	public NhanVien saveNhanVien(@RequestBody NhanVien nhanVien) {
@@ -34,5 +29,30 @@ public class NhanVienController {
 	@GetMapping("/NhanVien/{luong}")
 	public List<NhanVien> findNhanVienByLuong(@PathVariable int luong) {
 		return nhanVienService.findNhanVienByLuong(luong);
+	}
+	
+	@GetMapping("/NhanVien/totalSalary")
+	public int getTotalSalary() {
+		return nhanVienService.getToTalSalary();
+	}
+	
+	@GetMapping("/NhanVien/getEmployeesId/loai/{loai}")
+	public List<Integer> getEmployeesIdByPlane(@PathVariable String loai) {
+		return nhanVienService.getEmployeesIdByPlane(loai);
+	}
+	
+	@GetMapping("/NhanVien/getEmployeesName/loai/{maMB}")
+	public List<String> getEmployeesNameByPlaneId(@PathVariable int maMB) {
+		return nhanVienService.getEmployeesNameByPlaneId(maMB);
+	}
+	
+	@GetMapping("/NhanVien/getPlanesIdByPilotLastName/{lastName}")
+	public List<Integer> getPlaneIdByPilotLastName(@PathVariable String lastName) {
+		return nhanVienService.getPlaneIdByPilotLastName(lastName);
+	}
+	
+	@GetMapping("/NhanVien/getEmployeesId/loai1-loai2/{loai1}-{loai2}")
+	public List<Integer> getEmployeesIdByPlane(@PathVariable String loai1, @PathVariable String loai2) {
+		return nhanVienService.getEmployeesIdByPlane(loai1, loai2);
 	}
 }
