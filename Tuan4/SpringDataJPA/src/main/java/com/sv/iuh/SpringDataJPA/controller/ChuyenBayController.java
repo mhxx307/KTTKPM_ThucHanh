@@ -34,8 +34,13 @@ public class ChuyenBayController {
 		return chuyenBayService.findChuyenBayByViTri(from, to);
 	}
 	
-	@GetMapping("ChuyenBay/count/{gaDi}")
+	@GetMapping("/ChuyenBay/count/{gaDi}")
 	public int countChuyenBayTheoDiemXuatPhat(@PathVariable String gaDi) {
 		return chuyenBayService.countChuyenBayTheoDiemXuatPhat(gaDi);
+	}
+	
+	@GetMapping("/ChuyenBay/getListChuyenBayKhoiHanhTruoc12h")
+	public List<ChuyenBay> getListChuyenBayKhoiHanhTruoc12h() {
+		return chuyenBayService.getListChuyenBayKhoiHanhTruoc12h();
 	}
 }

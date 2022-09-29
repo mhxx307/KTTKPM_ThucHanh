@@ -44,5 +44,25 @@ public interface NhanVienRepository extends CrudRepository<NhanVien, String> {
 			+ "inner join chungnhan ON maybay.ma_mb = chungnhan.ma_mb\r\n"
 			+ "where maybay.loai like :loai1% OR maybay.loai like :loai2%", nativeQuery = true)
 	List<Integer> getEmployeesIdByPlane(@Param("loai1") String loai1, @Param("loai2") String loai2);
-
+	
+	// câu 15: cho biết tên của các phi công lái máy bay boeing
+	@Query(value = "select nhanvien.ten from nhanvien\r\n"
+			+ "inner join chungnhan on chungnhan.ma_nv = nhanvien.ma_nv\r\n"
+			+ "inner join maybay on chungnhan.ma_mb = maybay.ma_mb\r\n"
+			+ "where maybay.loai LIKE :planeName%", nativeQuery = true)
+	List<String> getPilotNameByPlaneName(@Param("planeName") String planeName);
+	
+	// câu 25: tìm các nhân viên không phải phi công
+	@Query(value = "select nhanvien.ma_nv, nhanvien.ten, nhanvien.luong from nhanvien\r\n"
+			+ "inner join chungnhan on chungnhan.ma_nv = nhanvien.ma_nv\r\n"
+			+ "inner join maybay on chungnhan.ma_mb = maybay.ma_mb\r\n"
+			+ "where nhanvien.ma_nv != chungnhan.ma_nv", nativeQuery = true)
+	List<NhanVien> getListNhanVienNotIsPilot();
+	
+	// câu 27: cho biết tổng số lương phải trả cho các phi công
+	@Query(value = "select sum(nhanvien.luong) from nhanvien\r\n"
+			+ "inner join chungnhan on chungnhan.ma_nv = nhanvien.ma_nv\r\n"
+			+ "inner join maybay on chungnhan.ma_mb = maybay.ma_mb\r\n"
+			+ "where nhanvien.ma_nv = chungnhan.ma_nv", nativeQuery = true)
+	long getPilotSalary();
 }

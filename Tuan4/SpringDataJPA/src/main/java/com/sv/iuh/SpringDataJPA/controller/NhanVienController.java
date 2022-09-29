@@ -55,4 +55,19 @@ public class NhanVienController {
 	public List<Integer> getEmployeesIdByPlane(@PathVariable String loai1, @PathVariable String loai2) {
 		return nhanVienService.getEmployeesIdByPlane(loai1, loai2);
 	}
+	
+	@GetMapping("/NhanVien/getPilotNameByPlaneName/{planeName}")
+	public List<String> getPilotNameByPlaneName(@PathVariable String planeName) {
+		return nhanVienService.getPilotNameByPlaneName(planeName);
+	}
+	
+	@GetMapping("/NhanVien/getListNhanVienNotIsPilot")
+	public List<NhanVien> getListNhanVienNotIsPilot() {
+		return nhanVienService.getListNhanVienNotIsPilot();
+	}
+	
+	@GetMapping("/NhanVien/getPilotSalary")
+	public long getPilotSalary() {
+		return nhanVienService.getPilotSalary();
+	}
 }

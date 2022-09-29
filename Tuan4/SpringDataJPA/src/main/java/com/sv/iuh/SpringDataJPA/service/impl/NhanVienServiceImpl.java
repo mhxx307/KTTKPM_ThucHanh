@@ -63,6 +63,24 @@ public class NhanVienServiceImpl implements NhanVienService {
 	public List<Integer> getEmployeesIdByPlane(String loai1, String loai2) {
 		return nhanVienRepository.getEmployeesIdByPlane(loai1, loai2);
 	}
+
+	@Override
+	@Transactional
+	public List<String> getPilotNameByPlaneName(String planeName) {
+		return nhanVienRepository.getPilotNameByPlaneName(planeName);
+	}
+
+	@Override
+	@Transactional
+	public List<NhanVien> getListNhanVienNotIsPilot() {
+		return nhanVienRepository.getListNhanVienNotIsPilot();
+	}
+
+	@Override
+	@Transactional
+	public long getPilotSalary() {
+		return nhanVienRepository.getPilotSalary();
+	}
 	
 	
 

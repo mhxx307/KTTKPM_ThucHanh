@@ -1,6 +1,7 @@
 package com.sv.iuh.SpringDataJPA.service;
 
 import java.util.List;
+
 import com.sv.iuh.SpringDataJPA.entity.NhanVien;
 
 public interface NhanVienService  {
@@ -11,4 +12,7 @@ public interface NhanVienService  {
 	public List<String> getEmployeesNameByPlaneId(int id);
 	public List<Integer> getPlaneIdByPilotLastName(String lastName);
 	public List<Integer> getEmployeesIdByPlane(String loai1,String loai2);
+	List<String> getPilotNameByPlaneName(String planeName);
+	List<NhanVien> getListNhanVienNotIsPilot();
+	long getPilotSalary();
 }

@@ -47,4 +47,10 @@ public class ChuyenBayServiceImpl implements ChuyenBayService {
 		return chuyenBayRepository.countChuyenBayTheoDiemXuatPhat(gaDi);
 	}
 
+	@Override
+	@Transactional
+	public List<ChuyenBay> getListChuyenBayKhoiHanhTruoc12h() {
+		return chuyenBayRepository.getListChuyenBayKhoiHanhTruoc12h();
+	}
+
 }
