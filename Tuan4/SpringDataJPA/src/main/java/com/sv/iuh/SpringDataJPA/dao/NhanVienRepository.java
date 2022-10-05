@@ -22,7 +22,7 @@ public interface NhanVienRepository extends CrudRepository<NhanVien, String> {
 	int getToTalSalary();
 
 	// câu 9: cho biết mã số của các phi công lái máy bay Boeing
-	@Query(value = "select chungnhan.ma_nv from maybay \r\n"
+	@Query(value = "select distinct chungnhan.ma_nv from maybay \r\n"
 			+ "inner join chungnhan ON maybay.ma_mb = chungnhan.ma_mb\r\n"
 			+ "where maybay.loai like :loai%", nativeQuery = true)
 	List<Integer> getEmployeesIdByPlane(@Param("loai") String loai);
